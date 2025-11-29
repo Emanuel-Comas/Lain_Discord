@@ -69,7 +69,7 @@ OWNER_ID=tu_id_de_discord
 5. Ejecuta el bot:
 
 ```bash
-python bot.py
+python Lain.py
 ```
 
 ---
