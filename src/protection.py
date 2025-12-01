@@ -14,7 +14,8 @@ os.makedirs("logs", exist_ok=True)
 # Crea (o recupera) un logger llamado "server_activity".
 server_logger = logging.getLogger("server_activity")
 # Le dice al logger que guarde los mensajes en un archivo llamado logs/server_activity.log.
-handler = logging.FileHandler("logs/server_activity.log")
+# Garantiza que todos los caracteres se puedan escribir, incluidos emojis y glitch.
+handler = logging.FileHandler("logs/server_activity.log", encoding="utf-8")
 # Define el formato de los logs, aquí guarda la fecha y hora y luego el mensaje.
 formatter = logging.Formatter("%(asctime)s | %(message)s")
 # Asocia el formato al handler (archivo).

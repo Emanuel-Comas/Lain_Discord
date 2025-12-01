@@ -122,7 +122,7 @@ Actualmente disponibles:
 
 ## 📂 Módulos del bot
 
-### `bot.py`
+### `Lain.py`
 
     - Archivo principal que inicializa el bot, carga `.env` y los módulos del bot.  
     - Controla los eventos `on_ready`, `on_message` y `on_command_error`.  
@@ -170,6 +170,42 @@ Actualmente disponibles:
     - `server_activity.log` => Registra mensajes eliminados, editados y menciones del OWNER_ID.
 
 ---
+
+### IDS (Intrusion Detection System)
+
+    config.json:
+
+        ignored_users": [] => El OWNER se agrega automaticamente.
+
+            -- Es para decirle al IDS que ciertos usuarios no deben generar alertas.
+
+            Ejemplo:
+
+                "ignored_users": [123456789012345678, 987654321098765432]
+
+    Mantiene las alertas para:
+
+        -- Mensajes sospechosos:
+
+            URLs o dominios peligrosos configurados en 'config.json', son analizados; si coinciden con la lista de suspicious_domains, se genera una alerta al OWNER.
+
+        -- Mensajes editados/eliminados:
+
+            La alerta sigue funcionando incluso si el mensaje se borra o se edita.
+
+        Las alertas se envían en embed al propietario con información detallada: usuario, contenido antes/después, tipo de alerta.
+
+        -- Mejora en embeds de alertas:
+
+            Los embeds ahora tienen:
+
+            Footer indicando el tipo de alerta
+
+            Estructura clara y visual para autor, contenido y hora
+
+            Facilita revisar rápidamente los eventos importantes.
+
+        -- Logging → Todos los eventos relevantes se registran en logs/server_activity.log para revisión.
 
 ## 🔧 Notas adicionales
 
