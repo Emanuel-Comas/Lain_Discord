@@ -28,7 +28,7 @@ server_logger.setLevel(logging.INFO)
 
 async def protection_event(bot, message):
     print(f"Debug mensaje recibido de {message.author}: {message.content}")
-    # Se ignroa cualquier bot, incluida Lain.
+    # Se ignora cualquier bot, incluida Lain.
     if message.author.bot:
         return
 

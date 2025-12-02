@@ -16,7 +16,7 @@ Lain_Discord/
     ├─ server_activity.log
 └─ src/
     ├─ status.py           # Cambia el estado de Lain en la barra del bot
-    ├─ auto_msgs.py        # Mensajes automáticos con estilo glitch
+    ├─ auto_msgs.py        # Mensajes automáticos con estilo glitch (Sin uso actualmente)
     ├─ protection.py       # Protección de Obito y advertencias en DM
     ├─ glitch.py           # Función de 'glitch' para textos
     └─ commands.py         # Definición de comandos
