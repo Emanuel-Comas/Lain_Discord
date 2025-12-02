@@ -1,10 +1,9 @@
 from discord.ext import commands
 import asyncio
 import psutil
-import random
+from discord import Embed
 from src.status import status_list
 from src.glitch import glitch
-import os
 
 def setup_commands(bot):
 
@@ -55,6 +54,34 @@ def setup_commands(bot):
                 help_msg += f"- {cmd.name}: {cmd.help or 'Sin descripción'}\n"
             help_msg += "\nUsa `!help_lain <comando>` para más información."
             await ctx.send(help_msg)
+
+    @bot.command()
+    async def decir(ctx, usuario: commands.MemberConverter, *, mensaje):
+        """Envía un mensaje estilizado al DM del usuario y borra el comando del canal."""
+    
+        # Borrar el mensaje del canal
+        try:
+            await ctx.message.delete()
+        except:
+            pass
+
+        # Agrega prefijo >> al mensaje sin glitch
+        mensaje_formateado = f">> {mensaje}"
+
+        # Crear embed estilo Lain
+        embed = Embed(
+            title="📡 Mensaje entrante desde la WIRED",
+            description=f"```\n{mensaje_formateado}\n```",
+            color=0x9b59b6
+        )
+        embed.set_footer(text=f"Transmitido por {ctx.author.display_name}")
+
+        # Intentar enviar DM
+        try:
+            await usuario.send(embed=embed)
+        except:
+            await ctx.send("No puedo enviarle DMs a ese usuario.", delete_after=5)
+
 
 
 

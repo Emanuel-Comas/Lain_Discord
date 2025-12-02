@@ -118,6 +118,8 @@ Actualmente disponibles:
 
 - **`!glitch_text <texto>`** → Convierte el texto proporcionado en estilo glitch legible.
 
+- **`!decir <User> <texto>`** → Envia un mensaje privado al usuario elegido con el mensaje que quieras.
+
 ---
 
 ## 📂 Módulos del bot
