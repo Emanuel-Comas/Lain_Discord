@@ -1,28 +1,35 @@
 {
     "ignored_users": [],
-    
     "ids": {
         "msg_flood_limit": 6,
         "msg_flood_seconds": 5,
-
         "edit_limit": 4,
         "delete_limit": 6,
-
         "spam_repeat_limit": 3,
         "new_account_days": 7
     },
-
     "suspicious_domains": [
         "bit.ly",
-        "tinyurl",
+        "tinyurl.com",
         "t.co",
         "cutt.ly",
         "rb.gy",
+        "goo.gl",
+        "shorturl.at",
         "free-nitro",
         "nitrofree",
         "discord-nitro",
         "gift-nitro",
         "steam-gift",
-        "claim-nitro"
+        "claim-nitro",
+        "discord-gift",
+        "discord-giveaway",
+        "discordpromo",
+        "steam-nitro",
+        "nitr0free",
+        "discordnitro",
+        "nitrogiveaway",
+        "get-nitro",
+        "verify-nitro"
     ]
 }

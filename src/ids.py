@@ -12,6 +12,7 @@ class LainIDS:
         ## agrega automáticamente tu OWNER_ID a la lista de ignorados, independientemente de lo que pongas en 
         # 'ignored_users' en 'config.json'.
         self.ignored = set(ignored or [])
+        # Esta linea se puede comentar para hacer pruebas, ya que sino Lain te ignora al ser admin.
         self.ignored.add(owner_id)
 
         # Última alerta enviada por usuario y tipo
