@@ -2,8 +2,8 @@ from discord.ext import commands
 import asyncio
 import psutil
 from discord import Embed
-from src.status import status_list
-from src.glitch import glitch
+from src.modules.status import status_list
+from src.modules.glitch import glitch
 
 def setup_commands(bot):
 

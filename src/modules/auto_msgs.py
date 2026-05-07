@@ -2,7 +2,7 @@
 import asyncio
 import random
 import os
-from src.glitch import glitch
+from src.modules.glitch import glitch
 from dotenv import load_dotenv
 
 load_dotenv()  # cargar variables del .env

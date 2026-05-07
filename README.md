@@ -1,25 +1,70 @@
-# Lain Discord Bot
+# 🧠 Lain Discord Bot
 
-    Lain es un bot de Discord inspirado en *Serial Experiments Lain*. Su objetivo principal es **proteger al usuario Admin en el servidor**, enviar mensajes automáticos con estilo hacker/glitch, y ofrecer funcionalidades adicionales como recordatorios y monitorización.
+Lain es un bot de Discord inspirado en *Serial Experiments Lain*.
+
+Su objetivo principal es:
+
+> 🛡️ Proteger al usuario Admin dentro del servidor  
+> 🤖 Automatizar mensajes con estética glitch / hacker  
+> 📊 Monitorear actividad sospechosa mediante un sistema IDS
+
+---
+
+# 🚀 Características principales
+
+## 🛡️ Sistema de protección (IDS)
+- Detección de mensajes sospechosos
+- Análisis de URLs maliciosas
+- Detección de flood de mensajes
+- Detección de spam por repetición
+- Detección de ediciones y borrados
+- Alertas enviadas por DM al OWNER_ID
+- Sistema de cooldown para evitar spam de alertas
+
+---
+
+## 🤖 Automatización
+- Mensajes automáticos con estilo glitch
+- Cambio dinámico de estado del bot
+- Recordatorios personalizados por usuario
+
+---
+
+## 💬 Comandos disponibles
+
+- `!hola` → Saludo estilo Lain
+- `!status_lain` → Uso de CPU y RAM del sistema
+- `!recordar <segundos> <mensaje>` → Recordatorio por DM
+- `!glitch_text <texto>` → Aplica efecto glitch al texto
+- `!decir <usuario> <mensaje>` → Envía mensaje privado estilizado
+- `!help_lain` → Lista de comandos o ayuda específica
 
 ---
 
 ## 🗂 Estructura de carpetas
 
 ```
-Lain_Discord/
-│
-├─ bot.py                   # Archivo principal del bot
-├─ .env                     # Variables de entorno
-├─ logs/                    # Carpeta donde se guardan los logs
-    ├─ lain.log
-    ├─ server_activity.log
-└─ src/
-    ├─ status.py           # Cambia el estado de Lain en la barra del bot
-    ├─ auto_msgs.py        # Mensajes automáticos con estilo glitch (Sin uso actualmente)
-    ├─ protection.py       # Protección de Obito y advertencias en DM
-    ├─ glitch.py           # Función de 'glitch' para textos
-    └─ commands.py         # Definición de comandos
+└── 📁Lain_Discord
+    └── 📁logs
+        ├── lain.log
+        ├── server_activity.log
+    └── 📁src
+        └── 📁config
+            ├── config.json
+        └── 📁core
+            ├── Lain.py
+        └── 📁modules
+            ├── __init__.py
+            ├── auto_msgs.py
+            ├── commands.py
+            ├── glitch.py
+            ├── ids.py
+            ├── protection.py
+            ├── status.py
+    ├── .env
+    ├── .gitignore
+    ├── README.md
+    └── requiremets.txt
 ```
 
 ---
@@ -122,32 +167,32 @@ Actualmente disponibles:
 
 ---
 
-## 📂 Módulos del bot
+## 📦 Módulos principales
 
-### `Lain.py`
+### 🟣 core/Lain.py
 
     - Archivo principal que inicializa el bot, carga `.env` y los módulos del bot.  
     - Controla los eventos `on_ready`, `on_message` y `on_command_error`.  
     - Ejecuta las tareas de **mensajes automáticos** y **cambio de estado**.
 
-### `src/status.py`
+### ⚙️ modules/status.py
 
     - Contiene la función `start_status_task(bot)` que cambia el **estado de Lain** en la barra del bot.  
     - No envía mensajes en el canal.
 
-### `src/auto_msgs.py`
+### 🤖 modules/auto_msgs.py
 
     - Contiene `start_auto_messages(bot)` que envía mensajes automáticos con efecto **glitch**.  
     - Los mensajes se envían en el canal definido por `DISCORD_CHANNEL_ID` en `.env`.  
     - La frecuencia y los textos pueden personalizarse.
 
-### `src/protection.py`
+### 🛡️ modules/protection.py
 
     - Contiene `protection_event(bot, message)` que protege al usuario Obito.  
     - Envía **DM al OWNER_ID** con fecha, hora, usuario y contenido si alguien menciona a Obito.  
     - Funciona incluso si el mensaje es borrado.
 
-### `src/commands.py`
+### 💬 modules/commands.py
 
     - Contiene los comandos definidos:
 
@@ -156,7 +201,7 @@ Actualmente disponibles:
         3. `!status_bot` → muestra CPU/RAM y estado del bot.  
         4. `!glitch_text <texto>` → convierte texto en glitch legible.
 
-### `src/glitch.py`
+### 🧪 modules/glitch.py
 
     - Función auxiliar para aplicar efecto 'glitch' a los textos:
 
@@ -166,14 +211,19 @@ Actualmente disponibles:
             -- Portección de menciónes
             -- Comando !glitch_text
 
-### `logs/`
+### logs/
 
     - `lain.log` => Registra eventos generales del bot, como conexón y errores de comandos.
     - `server_activity.log` => Registra mensajes eliminados, editados y menciones del OWNER_ID.
 
 ---
 
-### IDS (Intrusion Detection System)
+### 🧠 modules/ids.py (Intrusion Detection System)
+
+    - Sistema IDS del bot
+    - Detecta spam, flood, edits y deletes
+    - Analiza URLs sospechosas
+    - Genera alertas con cooldown
 
     config.json:
 
@@ -214,3 +264,16 @@ Actualmente disponibles:
     - Todos los textos de Lain, mensajes automáticos y efectos glitch pueden personalizarse en los archivos correspondientes.  
     - La protección en DM y los recordatorios son **solo visibles para el OWNER_ID**.  
     - El bot no tiene permisos de administración sobre los usuarios, por seguridad.
+
+
+# 👤 Autor
+
+> “The Wired is watching…”
+
+Desarrollado por **[Emanuel](https://github.com/Emanuel-Comas)**
+
+Proyecto personal enfocado en:
+- automatización
+- seguridad en Discord
+- sistemas de monitoreo (IDS)
+- estética glitch / Lain, inspirada en *Serial Experiments Lain*

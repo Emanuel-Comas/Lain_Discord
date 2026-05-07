@@ -4,14 +4,14 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import os
 import logging
-from src.protection import server_logger
-from src.ids import LainIDS
+from src.modules.protection import server_logger
+from src.modules.ids import LainIDS
 import json
 
-from src.status import start_status_task
-from src.auto_msgs import start_auto_messages
-from src.protection import protection_event
-from src.commands import setup_commands
+from src.modules.status import start_status_task
+from src.modules.auto_msgs import start_auto_messages
+from src.modules.protection import protection_event
+from src.modules.commands import setup_commands
 
 load_dotenv()
 OWNER_ID = int(os.getenv("OWNER_ID"))
