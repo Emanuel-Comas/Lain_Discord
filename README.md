@@ -114,7 +114,7 @@ OWNER_ID=tu_id_de_discord
 5. Ejecuta el bot:
 
 ```bash
-python Lain.py
+python -m src.core.Lain
 ```
 
 ---

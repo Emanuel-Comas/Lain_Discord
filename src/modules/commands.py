@@ -39,21 +39,66 @@ def setup_commands(bot):
         """Aplica un efecto de texto glitch y lo muestra en el chat."""
         await ctx.send(glitch(texto, intensidad=2, legible=True))
 
+    # Define un comando llamado "help_lain" en Discord.
     @bot.command(name="help_lain")
+    # Función del comando
+    # ctx = información del mensaje (usuario, canal, etc).
+    # comando = texto opcional después del comando (!help_lain hola).
     async def help_lain(ctx, *, comando=None):
-        """Muestra la lista de comandos o detalles de un comando específico"""
+
+        # Si el usuario escribió algo después de !help_lain (ej: !help_lain hola).
         if comando:
+            # Busca si existe un comando con ese nombre.
             cmd = bot.get_command(comando)
+            # Si el comando existe
             if cmd:
-                await ctx.send(f"**{cmd.name}**: {cmd.help or 'Sin descripción'}")
+                # Envía un mensaje con estilo "fix" (tipo consola).
+                # Muestra:
+                # - nombre del comando.
+                # - descripción del comando (o texto por defecto si no hay).
+                await ctx.send(f"""```fix
+    >> COMMAND TRACE
+    !{cmd.name}
+    {cmd.help or 'no description'}
+    ```""")
+            # Si no existe el comando
             else:
-                await ctx.send(f"No se encontró el comando `{comando}`")
-        else:
-            help_msg = "**Comandos disponibles:**\n"
-            for cmd in bot.commands:
-                help_msg += f"- {cmd.name}: {cmd.help or 'Sin descripción'}\n"
-            help_msg += "\nUsa `!help_lain <comando>` para más información."
-            await ctx.send(help_msg)
+                # Envía mensaje estilo error (rojo en Discord)
+                # Muestra error diciendo que no existe
+                await ctx.send(f"""```diff
+    - ERROR: command '!{comando}' not found
+    ```""")
+            # Termina la función aquí si se buscó un comando específico
+            return
+
+        # Si NO se escribió ningún comando, muestra la ayuda general
+        await ctx.send("""```yaml
+    ┌──────────────────────────────┐
+    │   🟣 LAIN WIRED INTERFACE    │
+    └──────────────────────────────┘
+
+    [ SYSTEM COMMANDS ]
+
+    🟢 !help        → Standard help interface
+    🟢 !help_lain   → Command info system
+    🟢 !status_lain → System CPU / RAM status
+
+    [ USER INTERACTION ]
+
+    🟡 !hola        → Lain greeting protocol
+    🟡 !decir       → Sends a private message to the selected user
+    🟡 !recordar    → Timed reminder
+
+    [ EFFECTS ]
+
+    🟣 !glitch_text → Glitch text renderer
+
+    ──────────────────────────────
+    >> ACCESS LEVEL: SYSTEM ADMINISTRATOR
+    >> USE: !help_lain <command>
+    ```""")
+    # '>> ACCESS LEVEL: SYSTEM ADMINISTRATOR' => Nivel de acceso mostrado (solo estética).
+    # >> USE: !help_lain <command> => Instrucción de uso.
 
     @bot.command()
     async def decir(ctx, usuario: commands.MemberConverter, *, mensaje):

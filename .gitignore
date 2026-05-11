@@ -1,2 +1,13 @@
+# entorno virtual
+venv/
+
+# variables privadas
 .env
-/venv
+
+# cache de python
+__pycache__/
+*.pyc
+*.pyo
+
+# logs
+logs/

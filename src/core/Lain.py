@@ -1,4 +1,5 @@
 import asyncio
+from pathlib import Path
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -17,12 +18,16 @@ load_dotenv()
 OWNER_ID = int(os.getenv("OWNER_ID"))
 
 # carpeta donde está Lain.py
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
-config_path = os.path.join(BASE_DIR, "src", "config", "config.json")
+# sube de core => src
+BASE_DIR = Path(__file__).resolve().parent.parent
+# Construye la ruta al archivo de configuración:
+# BASE_DIR apunta a la carpeta "src"
+# luego entra a "config" y finalmente al archivo "config.json"
+config_path = BASE_DIR / "config" / "config.json"
 
 ## Lerctura archivo config.json
-with open(config_path, "r") as f:
-        CONFIG = json.load(f)
+with open(config_path, "r", encoding="utf-8") as f:
+    CONFIG = json.load(f)
 
 
 ## Creacion de carpeta logs y configuración logging
